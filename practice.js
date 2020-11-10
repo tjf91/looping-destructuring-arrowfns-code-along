@@ -27,8 +27,8 @@ Inside this loop, change the value of each property to 0
 
 function objectLooper(number) {
     for (let key in number) {
-        // Code here
-    }
+        number[key]=0
+        }
     return number;
 };
 
@@ -51,7 +51,9 @@ If a value is greater than 3,000,000 set it to 0
 
 function stateLooper(obj) {
 	for (let key in obj) {
-		// Code here
+		if(obj[key]>3000000){
+            obj[key]=0
+        }
 	}
 	return obj;
 };
@@ -66,7 +68,12 @@ Once all falsy values and their properties are removed, return the object
 */
 
 function cleanUser(obj) {
-    // Code here
+   for (key in obj){
+       if(!obj[key]){
+           delete obj[key]
+       }
+   }
+   return obj
 };
 
 
@@ -79,7 +86,12 @@ Return the updated user object
 
 // Code here
 
-
+function maxedOut(obj){
+    for (key in obj){
+        obj[key]='max'
+    }
+    return obj
+}
 
 ////////// OBJECT DESTRUCTURING //////////
 
@@ -117,7 +129,7 @@ Destructure this object so that you have 3 distinct variables with values matchi
 
 // Code here
 
-
+const {cats,dogs,mice} = animalCount 
 
 ////////// PROBLEM 6 //////////
 
@@ -137,6 +149,8 @@ Set the value of students to be 24, mentors to be 3, and instructors to be 5
 
 // Code here
 
+const { students, mentors, instructors}={students: 24, mentors:3, instructors:5}
+
 
 
 ////////// PROBLEM 7 //////////
@@ -149,6 +163,13 @@ Use destructuring to assign the values of these properties to new variables
 
 // Code here
 
+const languages = {
+    "french":false,
+    "english":true,
+    "spanish":false,
+}
+
+const {french,english,spanish}=languages
 
 
 ////////// PROBLEM 8 //////////
@@ -184,6 +205,10 @@ Subtract num2 from num1 and return the result
 
 // Code here
 
+const subtraction = (obj) => {
+    const {num1,num2} = obj
+    return num1-num2
+}
 
 
 ////////// PROBLEM 9 //////////
@@ -197,7 +222,10 @@ Using object destructuring, return the total sum of the counts of these animals
 
 // Code here
 
-
+const zooAnimals = (obj) => {
+    let {lion,tiger,bear} = obj
+    return lion+tiger+bear
+}
 
 ////////// PROBLEM 10 //////////
 
@@ -226,7 +254,9 @@ Title and name in this sentence should be replaced with the values of the destru
 
 // Code here
 
-
+function greeting ({name,title}){
+    return `Hello, ${title} ${name}!`
+}
 
 ////////// PROBLEM 11 //////////
 
@@ -238,7 +268,12 @@ Return the value that is truthy
 */
 
 // Code here
-
+const truthyFalsy = ({number,string}) => {
+    if (number){
+        return number
+    }
+    return string
+}
 
 
 ////////// PROBLEM 12 //////////
@@ -252,7 +287,7 @@ Your function should also be contained within a single line
 */
 
 // Code here
-
+const isGreaterThanTwenty = (par) => (par>20)?true:false
 
 
 ////////// PROBLEM 13 //////////
@@ -265,7 +300,7 @@ Your function should also be contained within a single line
 */
 
 // Code here
-
+const seven = () => 7
 
 
 ////////// PROBLEM 14 //////////
@@ -294,6 +329,11 @@ function double(num) {
 
 // Code here
 
+ const add = (num1,num2) => num1+num2
+ const subtract = (num1,num2) => num1-num2
+ const double = (num) => num*2
+
+
 
 
 ////////// PROBLEM 15 //////////
@@ -306,7 +346,7 @@ You should not use the ES5 function declaration or function expression syntax in
 */
 
 // Code here
-
+const multiply = (num1,num2) => num1*num2
 
 
 ////////// PROBLEM 16 //////////
@@ -320,7 +360,7 @@ You should not use the ES5 function declaration or function expression syntax in
 
 // Code here
 
-
+const concatenate = (str1,str2) => str1+str2
 
 ////////// PROBLEM 17 //////////
 
@@ -334,7 +374,12 @@ You should not use the ES5 function declaration or function expression syntax in
 
 // Code here
 
-
+const gemInfo = (gemType, gemSize, gemWeight) => {
+    return{
+        gemType:gemType,
+        gemSize:gemSize,
+        gemWeight:gemWeight,
+    }}
 
 ////////// PROBLEM 18 //////////
 
@@ -359,6 +404,7 @@ let jobs = [
 
 
 // Code here
+const identifier = () => jobs.filter(job => job['programmer'])[0]
 
 
 
@@ -375,7 +421,7 @@ You should not use a for loop, but should use the filter method instead
 
 // Code here
 
-
+const evens = (arr) => arr.filter(x=>x%2===0)
 
 ////////// PROBLEM 20 //////////
 
@@ -391,7 +437,7 @@ You should not use a for loop, but should use the filter method instead
 */
 
 // Code here
-
+const startWithLetterA = ( arr) => arr.filter(x => x[0]==='a' || x[0]==='A')
 
 
 ////////// PROBLEM 21 //////////
@@ -404,7 +450,7 @@ Make sure to use arrow functions combined with the map method
 */
 
 const formalGreeting = names => {
-    // Code here
+   return names.map(x=>"Hello, "+x)
 }
 
 
@@ -419,5 +465,5 @@ Make sure to use arrow functions combined with the reduce method
 */
 
 const productOfArray = numbers => {
-    // Code here
+    return numbers.reduce((a,b)=>a*b)
 }
